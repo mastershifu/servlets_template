@@ -25,6 +25,15 @@ public class AppInitListener implements ServletContextListener {
                             ")"
             );
 
+            stmt.execute(
+                    "CREATE TABLE IF NOT EXISTS login_history (" +
+                            "  id         INT AUTO_INCREMENT PRIMARY KEY," +
+                            "  username   VARCHAR(50) NOT NULL," +
+                            "  role       VARCHAR(20) NOT NULL," +
+                            "  login_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP" +
+                            ")"
+            );
+
             System.out.println("Database ready.");
         } catch (SQLException e) {
             e.printStackTrace();
